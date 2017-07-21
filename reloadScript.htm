@@ -1,0 +1,16 @@
+<script>
+
+function refreshPage(waitTime){
+	myUrl = document.getElementById("myUrl").value;
+	window.open(myUrl, 'autoRefreshingWindow', 'location=yes,scrollbars=yes,status=yes'); 
+	myTimeout = setTimeout("refreshPage("+waitTime+")",waitTime<5000?5000:waitTime); 
+} 
+
+myTimeout=0;
+</script>
+
+<input type="text" id="myUrl" value="http://localhost:9000/hello?n=PLAY" size="90" />
+
+<input type="button" onclick="javascript:clearTimeout(myTimeout); refreshPage(10000)" value="go" />
+
+<input type="button" onclick="javascript:clearTimeout(myTimeout);" value="stop" />
